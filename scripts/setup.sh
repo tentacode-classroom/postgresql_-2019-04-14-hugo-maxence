@@ -9,4 +9,5 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 # Install the package
 apt-get install postgresql-11 -y
 
-
+# Start postgres
+sudo systemctl start postresql
