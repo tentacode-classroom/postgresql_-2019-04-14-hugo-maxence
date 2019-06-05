@@ -1,7 +1,9 @@
+-- Delete database is exist and create a new Database
+
 DROP DATABASE IF EXISTS github_events;
 CREATE DATABASE github_events;
 
-
+-- Create table with values
 
 CREATE TABLE repo
 (
@@ -38,6 +40,8 @@ CREATE TABLE push_event
     commits int
 ) INHERITS (events);
 
+-- Insert fake values on tables to test
+
 INSERT INTO repo (id, login, name, url)
 VALUES ('HG120', 'repo-max', 'maxence', 'https://github.com/MaxenceMottard'),
        ('T_601', 'repo-hugo', 'hugo', 'https://github.com/HugoBordais');
@@ -59,6 +63,8 @@ VALUES ('PH7MH91420', 'jean-paul', 'azertyuiop', true, 'https://github.com/Maxen
 INSERT INTO push_event (id, actor, repo, public, commits)
 VALUES ('PH7MHHG12091420', 'jean-paul', 'azertyuiop', true, 37),
        ('B6UAT_601571702', 'pierre-henry', 'poiuytreza', true, 0);
+
+-- Show tables
 
 SELECT * FROM repo;
 SELECT * FROM actor;
