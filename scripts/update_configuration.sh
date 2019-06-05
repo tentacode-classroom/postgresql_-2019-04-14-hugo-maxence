@@ -8,4 +8,4 @@ PROJECT_DIRECTORY=$FILE_DIRECTORY/..
 sudo -u postgres psql -f $PROJECT_DIRECTORY/sql/configure_db.sql
 
 # Restart postgres to apply changes
-sudo systemctl restart postgresql
+sudo service postregsql restart
