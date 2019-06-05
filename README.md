@@ -27,3 +27,11 @@ $ ./setup.sh
 ```
 
 
+
+##  Database : 
+
+Nous allons créer la base de données avec les tables. Des valeurs sont déjà rentrée afin de tester. Pour lancer l'opération tapez la commande suivant :
+
+```bash
+$ ./create_event_database.sh
+```
