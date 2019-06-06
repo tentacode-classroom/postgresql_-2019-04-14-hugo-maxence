@@ -1,0 +1,2 @@
+DROP USER IF EXISTS github_events;
+CREATE ROLE github_events LOGIN PASSWORD '12345';
