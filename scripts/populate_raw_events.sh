@@ -16,7 +16,6 @@ QUERY="INSERT INTO events_raw (data_json) values"
 echo '[ INFO ] Insertion des lignes dans la base de données.'
 echo '[ WARNING ] Ça peut-être très long 🙄'
 cat $PROJECT_DIRECTORY/data.json | sed 's/\\/\\\\/g' | while read LINE ; do
-#       POUR GABRIEL :  Le problème des escape venait du read juste au dessus !!!!
     LINE=`echo $LINE | sed s/\'/#/g`
 
     if [ $LINE_NUMBER -eq 1000 ]
