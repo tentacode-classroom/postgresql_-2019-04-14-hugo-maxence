@@ -12,7 +12,7 @@ sudo apt-get update
 
 # Install the package
 echo "[ INFO ] Lancement de l'installation de PostgreSQL version 11"
-sudo apt install postgresql-11 -y
+apt-get install postgresql-11 -y
 
 # Start postgres
 echo "[ INFO ] Démarrage du service PostgreSQL"
