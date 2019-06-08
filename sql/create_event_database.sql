@@ -17,10 +17,10 @@ CREATE TABLE repo
 
 CREATE TABLE actor
 (
-    id            SERIAL PRIMARY KEY NOT NULL,
-    login         VARCHAR(255)       NOT NULL,
-    display_login VARCHAR(255)       NOT NULL,
-    url           VARCHAR(255)       NOT NULL,
+    id            SERIAL PRIMARY KEY  NOT NULL,
+    login         VARCHAR(255) UNIQUE NOT NULL,
+    display_login VARCHAR(255)        NOT NULL,
+    url           VARCHAR(255)        NOT NULL,
     avatar_url    VARCHAR(255)
 );
 
@@ -78,3 +78,7 @@ SELECT *
 FROM issue_event;
 SELECT *
 FROM push_event;
+
+TRUNCATE repo RESTART IDENTITY CASCADE;
+TRUNCATE actor RESTART IDENTITY CASCADE;
+TRUNCATE events RESTART IDENTITY CASCADE;
