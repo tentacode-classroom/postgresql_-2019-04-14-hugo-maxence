@@ -15,23 +15,26 @@ rm -rf $PROJECT_DIRECTORY/data.sql
 
 QUERY="INSERT INTO events_raw (data_json) values"
 
-cat $PROJECT_DIRECTORY/data.json | while  read LINE ; do
-#    LINE=`echo $LINE | sed s/\'/#/g`
-    echo $LINE_NUMBER
+cat $PROJECT_DIRECTORY/data.json | sed 's/\\/\\\\/g' | while read LINE ; do
+#       POUR GABRIEL :  Le problème des escape venait du read juste au dessus !!!!
+    LINE=`echo $LINE | sed s/\'/#/g`
 
-    if [ $LINE_NUMBER -eq 100 ]
+    if [ $LINE_NUMBER -eq 1000 ]
     then
         QUERY="$QUERY ('$LINE');"
         echo $QUERY > $PROJECT_DIRECTORY/data.sql
-        sudo -u postgres psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/data.sql
+        QUERY="INSERT INTO events_raw (data_json) values"
+        psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/data.sql
         LINE_NUMBER=1
     else
-        echo $LINE_NUMBER
         ((LINE_NUMBER+=1))
         QUERY="$QUERY ('$LINE'), "
     fi
 
 done
 
+QUERY="$QUERY ('$LINE');"
+echo $QUERY > $PROJECT_DIRECTORY/data.sql
+psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/data.sql
+rm $PROJECT_DIRECTORY/data.sql
 
-rm -rf $PROJECT_DIRECTORY/sql_datas
