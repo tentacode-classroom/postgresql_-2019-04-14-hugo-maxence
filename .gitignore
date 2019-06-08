@@ -6,3 +6,4 @@
 .DS_Store
 data.json
 data.sql
+/backups/
