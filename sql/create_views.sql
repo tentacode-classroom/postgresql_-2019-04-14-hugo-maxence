@@ -1,9 +1,8 @@
 \c github_events;
 
-DROP VIEW IF EXISTS push_event_countCommits;
--- DROP VIEW IF EXISTS issue_event_info;
+DROP VIEW IF EXISTS push_event_count_commits;
 
-CREATE VIEW push_event_countCommits AS
+CREATE VIEW push_event_count_commits AS
 SELECT SUM(pe.commits),
        repo.name
 FROM push_event pe
@@ -12,4 +11,4 @@ GROUP BY repo.id;
 
 
 SELECT *
-FROM push_event_countCommits;
+FROM push_event_count_commits;
