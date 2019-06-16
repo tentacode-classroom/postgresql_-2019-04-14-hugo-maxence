@@ -52,6 +52,12 @@ $ ./create_event_database.sh
 
 ## Créations des utilisateurs :
 
+Nous allons 2 utilisateurs avec leurs droits et leurs rôles respectifs, nous allons créer un utilisateur "super_admin" et "github_events". Pour lancer le script de création des utilisateurs tapez la commande suivante :
+
+```bash
+$ ./create_users.sh
+```
+
 ## La table events_raw :
 
 ## Installation de pgAdmin :
@@ -59,6 +65,14 @@ $ ./create_event_database.sh
 ## Insertion depuis le JSON :
 
 ## Les vues statistiques :
+
+Nous avons coder un script qui permet de créer un vue. Cette vue permet de savoir le nombre de commit par repository, afin de démarrer le script, tapez la commande suivante :
+
+```bash
+$ ./create_views.sh
+```
+
+
 
 ## Script de backup
 
