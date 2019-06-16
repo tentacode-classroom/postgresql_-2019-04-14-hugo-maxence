@@ -68,7 +68,7 @@ $ ./update_configuration.sh
 
 ## Créations des utilisateurs :
 
-Nous allons 2 utilisateurs avec leurs droits et leurs rôles respectifs, nous allons créer un utilisateur "super_admin" et "github_events". Pour lancer le script de création des utilisateurs tapez la commande suivante :
+Nous allons créer 2 utilisateurs avec leurs droits et leurs rôles respectifs, le premier utilisateur "super_admin" et le second "github_events". Pour lancer le script de création des utilisateurs tapez la commande suivante :
 
 ```bash
 $ ./create_users.sh
@@ -77,6 +77,22 @@ $ ./create_users.sh
 ## La table events_raw :
 
 ## Installation de pgAdmin :
+
+Avec ce script nous allons installer pgAdmin. Ce script fais en sorte que le serveur Postgres accepte toute les adresses. 
+
+Pour exectuer ce script lancez :
+
+```bash
+$ ./pg_admin_install
+```
+
+Suite à ce script, dans le fichier "/etc/postgresql/11/main/pg_hba.conf" nous devons ajouter quel utilisateur à le droit de se connecter, en y ajoutant cette ligne dans le fichier :
+
+```
+local					all					super_admin					md5
+```
+
+
 
 ## Insertion depuis le JSON :
 
@@ -92,3 +108,10 @@ $ ./create_views.sh
 
 ## Script de backup
 
+Ce script permet de sauvergarder les données (tables, rows etc..) de la base données "github_events" ainsi que les utilisateurs et les globales. 
+
+Pour lancer le backup effectuez la commande suivante :
+
+```bash
+$ ./backup.sh
+```
