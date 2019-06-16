@@ -101,14 +101,14 @@ $ ./pg_admin_install
 Suite à ce script, dans le fichier “/etc/postgresql/11/main/pg_hba.conf“ nous devons ajouter quel utilisateur à le droit de se connecter, en y ajoutant cette ligne dans le fichier :
 
 ```bash
-local		all		super_admin		{plage_dadresse}		md5
+local	all	super_admin	{plage_dadresse}	md5
 ```
 
 
 
 ## Insertion depuis le JSON :
 
-Cette étape permet de transformer les données JSON insérées à l'étape “La table events_raw“
+Cette étape permet de transformer les données JSON insérées à l'étape “La table events_raw“ dans les 
 
 
 
