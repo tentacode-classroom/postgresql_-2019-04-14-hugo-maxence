@@ -8,7 +8,7 @@ SELECT SUM(pe.commits) number_commits,
 FROM push_event pe
          JOIN repo ON repo.id = pe.repo
 GROUP BY repo.id
-ORDER BY number_commits;
+ORDER BY number_commits DESC;
 
 
 SELECT *
