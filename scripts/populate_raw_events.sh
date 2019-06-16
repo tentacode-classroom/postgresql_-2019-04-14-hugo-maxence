@@ -43,3 +43,4 @@ psql --username super_admin -d github_events -f $SQL_DATA_FILE
 echo "[ INFO ] Insertion terminée"
 rm $SQL_DATA_FILE
 
+psql --username super_admin -d github_events -c 'SELECT * FROM events_raw LIMIT 10'
