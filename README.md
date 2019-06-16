@@ -48,17 +48,17 @@ $ ./create_event_database.sh
 
 
 
-### Modification de la configuration :
+## Modification de la configuration :
 
-### Créations des utilisateurs :
+## Créations des utilisateurs :
 
-### La table events_raw :
+## La table events_raw :
 
-### Installation de pgAdmin :
+## Installation de pgAdmin :
 
-### Insertion depuis le JSON :
+## Insertion depuis le JSON :
 
-### Les vues statistiques :
+## Les vues statistiques :
 
-### Script de backup
+## Script de backup
 
