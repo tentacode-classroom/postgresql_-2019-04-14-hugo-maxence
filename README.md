@@ -68,13 +68,25 @@ $ ./update_configuration.sh
 
 ## Créations des utilisateurs :
 
-Nous allons créer 2 utilisateurs avec leurs droits et leurs rôles respectifs, le premier utilisateur "super_admin" et le second "github_events". Pour lancer le script de création des utilisateurs tapez la commande suivante :
+Nous allons créer 2 utilisateurs avec leurs droits et leurs rôles respectifs, le premier utilisateur “super_admin“ et le second “github_events“. Pour lancer le script de création des utilisateurs tapez la commande suivante :
 
 ```bash
 $ ./create_users.sh
 ```
 
+
+
 ## La table events_raw :
+
+Le script populate_raw_events permet d'insérer toutes les lignes JSON, importées auparavant, dans une nouvelle table nommée “events_raw“. Attention, cette opération peut-être très longue.
+
+Tapez la commande :
+
+```bash
+$ ./populate_raw_events.sh
+```
+
+
 
 ## Installation de pgAdmin :
 
@@ -86,19 +98,25 @@ Pour exectuer ce script lancez :
 $ ./pg_admin_install
 ```
 
-Suite à ce script, dans le fichier "/etc/postgresql/11/main/pg_hba.conf" nous devons ajouter quel utilisateur à le droit de se connecter, en y ajoutant cette ligne dans le fichier :
+Suite à ce script, dans le fichier “/etc/postgresql/11/main/pg_hba.conf“ nous devons ajouter quel utilisateur à le droit de se connecter, en y ajoutant cette ligne dans le fichier :
 
-```
-local					all					super_admin					md5
+```bash
+local		all		super_admin		{plage_dadresse}		md5
 ```
 
 
 
 ## Insertion depuis le JSON :
 
+Cette étape permet de transformer les données JSON insérées à l'étape “La table events_raw“
+
+
+
 ## Les vues statistiques :
 
-Nous avons coder un script qui permet de créer un vue. Cette vue permet de savoir le nombre de commit par repository, afin de démarrer le script, tapez la commande suivante :
+Ce script permet de créer un vue afin d'afficher les repos ordonnés par nombre de commits.
+
+Tapez la commande suivante :
 
 ```bash
 $ ./create_views.sh
@@ -108,7 +126,7 @@ $ ./create_views.sh
 
 ## Script de backup
 
-Ce script permet de sauvergarder les données (tables, rows etc..) de la base données "github_events" ainsi que les utilisateurs et les globales. 
+Ce script permet de sauvergarder les données (tables, rows, etc..) de la base données “github_events“ ainsi que les utilisateurs et les globales. 
 
 Pour lancer le backup effectuez la commande suivante :
 
