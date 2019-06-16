@@ -108,7 +108,13 @@ local	all	super_admin	{plage_dadresse}	md5
 
 ## Insertion depuis le JSON :
 
-Cette étape permet de transformer les données JSON insérées à l'étape “La table events_raw“ dans les 
+Cette étape permet de transformer les données JSON insérées à l'étape “La table events_raw“ en row dans la base de données. On donc insérés les actors, les repos, et tous les types d'events.
+
+Pour insérer les données depuis le JSON : 
+
+```bash
+$ ./populate_events.sh
+```
 
 
 
