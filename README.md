@@ -18,7 +18,7 @@ $ vagrant ssh
 
 
 
-## Setup :
+## Setup PostgreSQL:
 
 Nous avons créé un script (setup.sh) qui permet d'installer PostgreSQL facilement. Pour le lancer tapez la commande suivante :
 
@@ -28,10 +28,37 @@ $ ./setup_postgresql.sh
 
 
 
-##  Database : 
+## Import GitHub Data :
+
+Nous allons ensuite importer les données de la journée du 14 avril 2019 de minuit à 23h00. Pour cela tapez la commande suivante :
+
+```bash
+$ ./import_github.sh
+```
+
+
+
+##  Héritage des tables : 
 
 Nous allons créer la base de données avec les tables. Des valeurs sont déjà rentrée afin de tester. Pour lancer l'opération tapez la commande suivant :
 
 ```bash
 $ ./create_event_database.sh
 ```
+
+
+
+### Modification de la configuration :
+
+### Créations des utilisateurs :
+
+### La table events_raw :
+
+### Installation de pgAdmin :
+
+### Insertion depuis le JSON :
+
+### Les vues statistiques :
+
+### Script de backup
+
