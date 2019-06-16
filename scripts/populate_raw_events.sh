@@ -4,12 +4,14 @@
 FILE_DIRECTORY=`dirname $0`
 PROJECT_DIRECTORY=$FILE_DIRECTORY/..
 
+SQL_DATA_FILE=$PROJECT_DIRECTORY/data.sql
+
 echo '[ INFO ] Création de la table events_raw'
 psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/sql/create_events_raw_table.sql
 
 
 LINE_NUMBER=1
-rm -rf $PROJECT_DIRECTORY/data.sql
+rm -rf $SQL_DATA_FILE
 
 QUERY="INSERT INTO events_raw (data_json) values"
 
@@ -21,8 +23,8 @@ cat $PROJECT_DIRECTORY/data.json | sed 's/\\/\\\\/g' | while read LINE ; do
     if [ $LINE_NUMBER -eq 1000 ]
     then
         QUERY="$QUERY ('$LINE');"
-        echo $QUERY > $PROJECT_DIRECTORY/data.sql
-        psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/data.sql
+        echo $QUERY > $SQL_DATA_FILE
+        psql --username super_admin -d github_events -f $SQL_DATA_FILE
         echo "[ INFO ] 1000 lignes viennent d'être insérées en base de données."
 
         QUERY="INSERT INTO events_raw (data_json) values"
@@ -35,9 +37,9 @@ cat $PROJECT_DIRECTORY/data.json | sed 's/\\/\\\\/g' | while read LINE ; do
 done
 
 QUERY="$QUERY ('$LINE');"
-echo $QUERY > $PROJECT_DIRECTORY/data.sql
-psql --username super_admin -d github_events -f $PROJECT_DIRECTORY/data.sql
+echo $QUERY > $SQL_DATA_FILE
+psql --username super_admin -d github_events -f $SQL_DATA_FILE
 
 echo "[ INFO ] Insertion terminée"
-rm $PROJECT_DIRECTORY/data.sql
+rm $SQL_DATA_FILE
 

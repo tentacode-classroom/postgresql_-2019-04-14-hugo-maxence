@@ -1,3 +1,4 @@
+#!/bin/bash
 
 FILE_DIRECTORY=`dirname $0`
 BACKUPS_DIRECTORY=$FILE_DIRECTORY/../backups
