@@ -20,7 +20,9 @@ $ vagrant ssh
 
 ## Setup PostgreSQL:
 
-Nous avons créé un script (setup.sh) qui permet d'installer PostgreSQL facilement. Pour le lancer tapez la commande suivante :
+Nous avons créé un script (setup.sh) qui permet d'installer PostgreSQL facilement.
+
+Pour le lancer tapez la commande suivante :
 
 ```bash
 $ ./setup_postgresql.sh
@@ -30,7 +32,9 @@ $ ./setup_postgresql.sh
 
 ## Import GitHub Data :
 
-Nous allons ensuite importer les données de la journée du 14 avril 2019 de minuit à 23h00. Pour cela tapez la commande suivante :
+Dans un premier, ce script, télécharge les données de Github, sous une forme compressée, de la journée du 14 avril 2019 de minuit à 23h00. Dans un second il décompresse les archives pour avoir des fichiers au format JSON. Pour terminer, le script concataine toutes les données dans un unique fichier “data.json“.
+
+Pour cela tapez la commande suivante :
 
 ```bash
 $ ./import_github.sh
@@ -40,7 +44,9 @@ $ ./import_github.sh
 
 ##  Héritage des tables : 
 
-Nous allons créer la base de données avec les tables. Des valeurs sont déjà rentrée afin de tester. Pour lancer l'opération tapez la commande suivant :
+Dans ce script, on créé une base de données “github_events“ avec les tables actors, repos, events, push_events, issue_events, pull_request_events. On essaie ensuite d'insérer des données pour tester le bon fonctionnement des tables. Puis losque cela est fait, on clean les tables.
+
+Pour lancer l'opération tapez la commande suivant :
 
 ```bash
 $ ./create_event_database.sh
@@ -49,6 +55,16 @@ $ ./create_event_database.sh
 
 
 ## Modification de la configuration :
+
+Le but de ce script est de configurer le serveur PostgreSQL directement en SQL, ainsi, nous modifions le port de Postgres ainsi que la mémoire utilisée. Une fois les configurations testée, nous remettons les configurations à zéro car un bug présent lors du changement de port.
+
+Pour configurer Postgres, lancer la commande :
+
+```bash
+$ ./update_configuration.sh
+```
+
+
 
 ## Créations des utilisateurs :
 
