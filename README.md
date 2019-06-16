@@ -23,7 +23,7 @@ $ vagrant ssh
 Nous avons créé un script (setup.sh) qui permet d'installer PostgreSQL facilement. Pour le lancer tapez la commande suivante :
 
 ```bash
-$ ./setup.sh
+$ ./setup_postgresql.sh
 ```
 
 
